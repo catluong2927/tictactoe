@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tictactoe</title>
+</head>
+<body>
+<h1>TIC TAC TOE</h1><hr>
+<p id="tictactoe" />
+<input type="button" value="player" onclick="changeValue()">
+<script>
+    let taBle = [];
+    let data = ""
+    let b = document.getElementById("tictactoe");
+    let turn = 1;
+    for (let i = 0; i < 5; i++) {
+        taBle[i] = new Array("(.)", "(.)", "(.)", "(.)", "(.)");
+    }
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            data += taBle[i][j] + "&nbsp;&nbsp;";
+        }
+        data += "<br/>";
+    }
+    data += "<br/><br/><input type='button' value='player' onclick='changeValue()'>";
+    b.innerHTML = data;
+    function changeValue() {
+        let positionX = prompt("nhập vị trí X: ");
+        let positionY = prompt("nhập vị trí Y: ");
+        data = "";
+        if (turn % 2 == 0) taBle[positionX][positionY] = "O";
+        else taBle[positionX][positionY] = "X";
+        turn++;
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += taBle[i][j] + "&nbsp;&nbsp";
+            }
+        }
+        data += "<br/><br/><input type='button' value='player' onclick='changeValue()'>"
+        b.innerHTML = data;
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                if (taBle[i][j] === 'X' && taBle[i][j + 1] === 'X' && taBle[i][j + 2] === 'X' ||
+                    taBle[i][j] === 'X' && taBle[i + 1][j] === 'X' && taBle[i + 2][j] === 'X'||
+                    taBle[i][j] === 'X' && taBle[i + 1][j+1] === 'X' && taBle[i + 2][j+2] === 'X') {
+                    alert("player 1 Thắng");
+                } else if (taBle[i][j] === 'O' && taBle[i][j + 1] === 'O' && taBle[i][j + 2] === 'O' ||
+                    taBle[i][j] === 'O' && taBle[i + 1][j] === 'O' && taBle[i + 2][j] === 'O'||
+                    taBle[i][j] === 'O' && taBle[i + 1][j+1] === 'O' && taBle[i + 2][j+2] === 'O') {
+                    alert("player 2 Thắng");
+                }
+            }
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
